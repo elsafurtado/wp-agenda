@@ -1,0 +1,31 @@
+/*
+ * Stylesheets for public area of agenda plugin
+ * 
+ */
+
+.loading {
+	display: inline-block;
+	width: 80px;
+	heith: 30px;
+	text-align: center;
+}
+
+.fc-event a {
+  background-color: white;
+  color: white;
+}
+
+.fc-event a:hover {
+  background-color: #D7DDD9;
+  color: white;
+}
+
+.fc-content .fc-state-highlight.fc-today {
+  background-color: #F6F9F7;
+}
+
+.wp-agenda-tooltip-image {
+   float: left;
+   margin: 0 20px 20px 0;
+   display: block;
+}
