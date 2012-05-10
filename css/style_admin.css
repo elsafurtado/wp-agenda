@@ -1,0 +1,9 @@
+#wp-agenda-date label, #wp-agenda-local {
+	font-weight: bold;
+	display: block;
+	margin: 10px 0;
+}
+
+#wp-agenda-local textarea {
+	display: block;
+}

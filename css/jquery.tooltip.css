@@ -1,0 +1,22 @@
+#tooltip {
+	font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+	z-index: 3000;
+	border: 1px solid #eee;
+	background-color: white;
+  color: #090909;
+	padding: 20px;
+	opacity: 0.95;
+  width: 300px;
+  -moz-box-shadow: 10px 10px 5px #888;
+  -webkit-box-shadow: 10px 10px 5px #888;
+  box-shadow: 10px 10px 5px #888;
+}
+
+#tooltip h3 {
+  font-size: 14px;
+}
+
+#tooltip p {
+  color: #6F6F6F;
+}

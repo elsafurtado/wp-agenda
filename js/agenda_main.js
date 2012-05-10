@@ -31,10 +31,17 @@ jQuery(document).ready(function() {
 		header: agenda_locale.header,
 		buttonText: agenda_locale.buttonText,
 		editable: false,
+<<<<<<< HEAD
 		loading: function(loading){
     if (loading) {
 				jQuery.blockUI({
 					message: 'loading...'
+=======
+		loading: function(loading){
+    if (loading) {
+				jQuery.blockUI({
+					message: 'Carregando eventos...'
+>>>>>>> c11db2bc4e4d1058081e99c2c19fd31f1efa06e8
 				});
 			}
 			else {

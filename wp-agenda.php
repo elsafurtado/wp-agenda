@@ -15,7 +15,11 @@ class Agenda {
 	var $name = 'agenda';
 
 	function __construct() {
+<<<<<<< HEAD
 		//$this->register_admin_scripts();
+=======
+		$this->register_admin_scripts();
+>>>>>>> c11db2bc4e4d1058081e99c2c19fd31f1efa06e8
 		$this->register_public_scripts();
 		$this->register_actions();
 		$this->register_ajax_actions();
@@ -30,8 +34,13 @@ class Agenda {
     wp_enqueue_script('jquery-ui-dialog');
     wp_enqueue_script( 'form');
 		wp_enqueue_script('jgrowl', PLUGIN_PATH.'/js/jquery.jgrowl_compressed.js', array('jquery'));
+<<<<<<< HEAD
 		wp_enqueue_script('jquery-ui-datepicker', PLUGIN_PATH.'/js/jquery.ui.datepicker.js', array('jquery','jquery-ui-core'));
 		//wp_enqueue_script('datepicker-i18n', PLUGIN_PATH.'/js/jquery.ui.datepicker-pt-BR.js', array('jquery'));
+=======
+		wp_enqueue_script('datepicker-i18n', PLUGIN_PATH.'/js/jquery.ui.datepicker-pt-BR.js', array('jquery'));
+		wp_enqueue_script('jquery-ui-datepicker', PLUGIN_PATH.'/js/jquery.ui.datepicker.js', array('jquery','jquery-ui-core'));
+>>>>>>> c11db2bc4e4d1058081e99c2c19fd31f1efa06e8
 		wp_enqueue_script( 'dateformat', PLUGIN_PATH.'/js/dateformat.js');
 		wp_enqueue_script( 'blockui', PLUGIN_PATH.'/js/jquery.blockui.js', array('jquery'));
 		wp_enqueue_script( 'validate', PLUGIN_PATH.'/js/jquery.validate.min.js', array('jquery'));
@@ -42,7 +51,11 @@ class Agenda {
 		wp_enqueue_style( 'fullcalendar', PLUGIN_PATH.'/css/fullcalendar.css');
 		wp_enqueue_style('tooltip', PLUGIN_PATH.'/css/jquery.tooltip.css');
 		wp_enqueue_style('public', PLUGIN_PATH.'/css/style_public.css');
+<<<<<<< HEAD
 		wp_enqueue_script( 'blockui', PLUGIN_PATH.'/js/jquery.blockui.js', array('jquery'));
+=======
+		
+>>>>>>> c11db2bc4e4d1058081e99c2c19fd31f1efa06e8
 		wp_enqueue_script('jgrowl', PLUGIN_PATH.'/js/jquery.jgrowl_compressed.js', array('jquery'));
 		wp_enqueue_script('tooltip', PLUGIN_PATH.'/js/jquery.tooltip.pack.js', array('jquery'));
 		wp_enqueue_script( 'fullcalendar', PLUGIN_PATH.'/js/fullcalendar.js', array('jquery','jquery-ui-core','jquery-ui-draggable','jquery-ui-resizable','tooltip'));
