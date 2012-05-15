@@ -42,6 +42,7 @@ e.g.
 Once the event is created, you can acessing http://yoursite/?agenda=show for see the full calendar of events, or even http://yoursite/?post_type=agenda for see the events lists.
 
 == Screenshots ==
+<<<<<<< HEAD
 
 1. `/trunk/screenshot1.png`
 2. `/trunk/screenshot2.png`
@@ -49,14 +50,34 @@ Once the event is created, you can acessing http://yoursite/?agenda=show for see
 4. `/trunk/screenshot4.png`
 5. `/trunk/screenshot5.png`
 6. `/trunk/screenshot6.png`
+=======
+
+1. Full Calendar
+2. Listing events created
+3. Management time
+4. Management time
+5. Management time
+6. New event
+7. New option at admin
+8. The calendar page
 
 == Frequently Asked Questions ==
 
 = What's the different from others great Agenda Plugins out there? =
 
 Well, my motivation to write this plugin is to use the new post-type introduced at version 3.0. This way I could use the wordpress post system to handler events as posts, and this way be categorized and treated as posts. Another thing is that I was wishing some flexible with the layout, so you can use a agenda template in your theme and it will be loaded!.
+>>>>>>> svn
+
+== Frequently Asked Questions ==
+
+<<<<<<< HEAD
+= What's the different from others great Agenda Plugins out there? =
+
+Well, my motivation to write this plugin is to use the new post-type introduced at version 3.0. This way I could use the wordpress post system to handler events as posts, and this way be categorized and treated as posts. Another thing is that I was wishing some flexible with the layout, so you can use a agenda template in your theme and it will be loaded!.
 
 == Changelog ==
 
+=======
+>>>>>>> svn
 = 1.0 =
 * first release. Rewriting the old wp-agenda from funarte website to a new post-type
