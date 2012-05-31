@@ -35,7 +35,7 @@ class Agenda {
 		wp_enqueue_script( 'dateformat', PLUGIN_PATH.'/js/dateformat.js');
 		wp_enqueue_script( 'blockui', PLUGIN_PATH.'/js/jquery.blockui.js', array('jquery'));
 		wp_enqueue_script( 'validate', PLUGIN_PATH.'/js/jquery.validate.min.js', array('jquery'));
-		wp_enqueue_script( 'agenda', PLUGIN_PATH.'/js/agenda_admin.js', array('fullcalendar','jquery-ui-dialog'));
+		wp_enqueue_script( 'agenda', PLUGIN_PATH.'/js/agenda_admin.js', array('fullcalendar','jquery-ui-dialog', 'jquery-ui-datepicker'));
 	}
 
 	function register_public_scripts() {
@@ -59,9 +59,8 @@ class Agenda {
 		add_action('wp_print_scripts', array($this,'generate_javascript_object'));
 		
 		/* reescrevendo url */
-		add_action('generate_rewrite_rules', array($this,'agenda_add_rewrite_rules'));
 		/* aplicando urls */
-		add_action('init', array($this,'agenda_flush_rewrite_rules'));
+		add_action('init', array($this,'agenda_rewrite_rules'));
 		/* redirecionando template */
 		add_action("template_redirect",array($this,'agenda_templates'));
 		/* passando variaveis para o loop de agenda */
@@ -85,13 +84,16 @@ class Agenda {
 	function get_agenda_events() {
 		global $wpdb;
 		$events = get_posts(array('post_type'=>'agenda', 'numberposts' => -1), ARRAY_A);
+		if( current_theme_supports( 'post-thumbnail' ) ) {
+			$thumb = get_the_post_thumbnail( $event->ID, array(100,100) );
+		}
 		
 		foreach($events as $event) {
 			$event->start_date = get_post_meta($event->ID, 'start-date');
 			$event->end_date = get_post_meta($event->ID, 'end-date');
 			$event->start_time = get_post_meta($event->ID, 'start-time');
 			$event->end_time = get_post_meta($event->ID, 'end-time');
-			$event->thumbnail = get_the_post_thumbnail( $event->ID, array(100,100) );
+			$event->thumbnail = $thumb;
 		}
 		$json = json_encode($events);
 		echo $json;
@@ -193,21 +195,13 @@ class Agenda {
 		return $metadata;
 	}
 
-	function agenda_add_rewrite_rules($wp_rewrite) {
-		$new_rules = Array();
- 	  $new_rules['agenda/?$'] = 'index.php?post_type=agenda';
-    $new_rules['agenda/?$'] = 'index.php?agenda=show';
-		$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
-	}
-
-	function agenda_flush_rewrite_rules() {
-		global $wp_rewrite;
-		$wp_rewrite->flush_rules();
+	function agenda_rewrite_rules() {
+		add_rewrite_tag('%agenda%','([^&]+)');
 	}
 
 	function agenda_templates() {
-
-		if ( $_GET['agenda'] == 'show' ) {
+	  global $wp_query;
+		if ( !is_null($wp_query->query_vars['agenda']) ) {
 			if (file_exists(TEMPLATEPATH . '/agenda.php')) {
 				include(TEMPLATEPATH . '/agenda.php');
 				exit;
