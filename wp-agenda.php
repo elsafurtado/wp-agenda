@@ -3,7 +3,7 @@
  Plugin Name: WP Agenda
  Plugin URI: http://www.alexandremagno.net/projects/wp-agenda
  Description: Manage events with wordpress
- Version: 0.1
+ Version: 1.5
  Author: Alexandre Magno <alexanmtz@gmail.com>
  Author URI: http://blog.alexandremagno.net
  */
@@ -76,19 +76,19 @@ class Agenda {
 	}
 	
 	function register_ajax_actions() {
-		add_action('wp_ajax_nopriv_agenda_events', array($this,'get_agenda_events'));
 		add_action('wp_ajax_agenda_events', array($this,'get_agenda_events'));
+    add_action('wp_ajax_nopriv_agenda_events', array($this,'get_agenda_events'));
 	}
 	
 	
 	function get_agenda_events() {
 		global $wpdb;
 		$events = get_posts(array('post_type'=>'agenda', 'numberposts' => -1), ARRAY_A);
-		if( current_theme_supports( 'post-thumbnail' ) ) {
-			$thumb = get_the_post_thumbnail( $event->ID, array(100,100) );
-		}
-		
+    
 		foreach($events as $event) {
+		  if( current_theme_supports( 'post-thumbnails' ) ) {
+        $thumb = get_the_post_thumbnail( $event->ID, array(100,100) );
+      }
 			$event->start_date = get_post_meta($event->ID, 'start-date');
 			$event->end_date = get_post_meta($event->ID, 'end-date');
 			$event->start_time = get_post_meta($event->ID, 'start-time');
